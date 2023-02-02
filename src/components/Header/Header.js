@@ -17,22 +17,22 @@ function Header() {
           <Link to="/">
             <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" />
           </Link>
-          <Button to="/">Movies</Button> 
-          <Button to="/">TV Shows</Button>
-          <Button to="/">People</Button>
-          <Button to="/">More</Button>
+          <Button>Movies</Button> 
+          <Button>TV Shows</Button>
+          <Button>People</Button>
+          <Button>More</Button>
         </nav>
         <div className={cx("actions")}>
-          <Button to="/movies">
-            <FontAwesomeIcon icon={faPlusSquare} className={cx("plus")} />
+          <Button more>
+            <FontAwesomeIcon icon={faPlusSquare}/>
           </Button>
-          <Button to="/movies" outline>
+          <Button outline>
             EN
           </Button>
-          <Button to="/movies">Login</Button>
-          <Button to="/movies">Join TMDB</Button>
-          <Button to="/movies">
-            <FontAwesomeIcon icon={faSearch} className={cx("search")} />
+          <Button>Login</Button>
+          <Button>Join TMDB</Button>
+          <Button search>
+            <FontAwesomeIcon icon={faSearch} />
           </Button>
         </div>
       </div>
