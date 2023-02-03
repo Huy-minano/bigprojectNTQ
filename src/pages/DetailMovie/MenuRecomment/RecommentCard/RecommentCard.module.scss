@@ -1,0 +1,21 @@
+.wrapper{
+    min-width: 250px;
+    max-height: 164px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    .image{
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    .infor{
+        display: flex;
+        justify-content: space-between;
+        .name{
+        }
+        .rate{
+        }
+    }
+    
+}
