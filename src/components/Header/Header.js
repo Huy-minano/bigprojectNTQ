@@ -29,9 +29,9 @@ function Header() {
           <Button to="/movies" outline>
             EN
           </Button>
-          <Button to="/movies">Login</Button>
-          <Button to="/movies">Join TMDB</Button>
-          <Button to="/movies">
+          <Button to="/">Login</Button>
+          <Button to="/">Join TMDB</Button>
+          <Button to="/">
             <FontAwesomeIcon icon={faSearch} className={cx("search")} />
           </Button>
         </div>
