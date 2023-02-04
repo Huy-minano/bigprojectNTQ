@@ -1,34 +1,26 @@
-import classNames from "classnames/bind";
-import styles from "./MenuRecomment.module.scss";
+import Menu from "../../../components/Menu";
 import RecommentCard from "./RecommentCard";
 
-const cx = classNames.bind(styles);
-
-function MenuRecomment() {
+function MenuRecomment({ title }) {
   return (
-    <div className={cx("wrapper")}>
-      <div className={cx("title")}>
-        <h3>Recommendations</h3>
-      </div>
-      <div className={cx("content")}>
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-        <RecommentCard />
-      </div>
-    </div>
+    <Menu title={title}>
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+      <RecommentCard />
+    </Menu>
   );
 }
 

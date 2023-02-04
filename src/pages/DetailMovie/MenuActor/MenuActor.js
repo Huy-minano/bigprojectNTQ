@@ -1,16 +1,15 @@
 import classNames from "classnames/bind";
 import styles from "./MenuActor.module.scss";
+
 import ActorCard from "./ActorCard";
+import Menu from "../../../components/Menu";
 
 const cx = classNames.bind(styles);
 
-function MenuActor() {
+function MenuActor({ title }) {
   return (
     <div className={cx("wrapper")}>
-      <div className={cx("title")}>
-        <h3>Top Billed Cast</h3>
-      </div>
-      <div className={cx("content")}>
+      <Menu title={title}>
         <ActorCard />
         <ActorCard />
         <ActorCard />
@@ -27,7 +26,8 @@ function MenuActor() {
         <ActorCard />
         <ActorCard />
         <ActorCard />
-      </div>
+      </Menu>
+      <h3 className={cx("extend")}>Full Cast & Crew</h3>
     </div>
   );
 }

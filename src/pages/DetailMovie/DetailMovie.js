@@ -3,6 +3,9 @@ import styles from "./DetailMovie.module.scss";
 
 import TitleMovie from "./TitleMovie";
 import MenuActor from "./MenuActor";
+import Social from "./Social";
+import Media from "./Media/Media.js";
+import Collection from "./Collection";
 import MenuRecomment from "./MenuRecomment";
 
 const cx = classNames.bind(styles);
@@ -13,11 +16,11 @@ function DetailMovie() {
       <TitleMovie />
       <div className={cx("inforMovie")}>
         <div className={cx("content")}>
-          <MenuActor />
-          {/* <Social> */}
-          {/* <MenuMedia> */}
-          {/* <MenuRecomment> */}
-          <MenuRecomment/>
+          <MenuActor title="Top Billed Cast" />
+          <Social title="Social" />
+          <Media title="Media" />
+          <Collection />
+          <MenuRecomment title="Recommendations" />
         </div>
       </div>
     </div>
