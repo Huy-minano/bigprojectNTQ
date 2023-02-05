@@ -2,7 +2,6 @@ import classNames from "classnames/bind";
 import styles from "./TitleMovie.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  fa0,
   faBookmark,
   faHeart,
   faList,
@@ -28,9 +27,7 @@ function TitleMovie() {
           <div className={cx("title")}>
             <h2 className={cx("name")}>Spider-Man 2 (2004)</h2>
             <div className={cx("type")}>
-              <span className={cx("type-age")}>
-                PG-13
-              </span>
+              <span className={cx("type-age")}>PG-13</span>
               <span>06/30/2004 (US)</span>
               <span>Action, Adventure, Fantasy</span>
               <span>2h 7m</span>
