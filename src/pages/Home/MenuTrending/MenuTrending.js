@@ -7,36 +7,35 @@ import Menu from "../../../components/Menu";
 
 const cx = classNames.bind(styles);
 
-function MenuTrending({ title }) {
-  const subMenu = ["Today", "This Week"];
-  const [content, setContent] = useState("Today");
+const TODAY_ITEM = {
+  key: "toDay",
+  value: "Today"
+}
+
+const THIS_WEEK_ITEM = {
+  key: "thisWeek",
+  value: "This Week"
+}
+
+const TRENDING_SUB_MENU = [TODAY_ITEM, THIS_WEEK_ITEM];
+
+function MenuTrending({ title, dataRender }) {
+  const [content, setContent] = useState("toDay");
+  
+  const [listMovieTrendingDay, listMovieTrendingWeek] = dataRender
+
   const handleChangeContent = (type) => {
     setContent(type);
   };
 
-  let data = {
-    img: "https://www.themoviedb.org/t/p/w220_and_h330_face/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
-    rate: 75,
-    name: "Black Panther: Wakanda Forever",
-    release: "Nov 09, 2022",
-  };
+  let data = []
 
   switch (content) {
-    case "Today":
-      data = {
-        img: "https://www.themoviedb.org/t/p/w220_and_h330_face/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
-        rate: 75,
-        name: "Black Panther: Wakanda Forever",
-        release: "Nov 09, 2022",
-      };
+    case "toDay":
+      data = listMovieTrendingDay
       break;
-    case "This Week":
-      data = {
-        img: "https://www.themoviedb.org/t/p/w220_and_h330_face/2g9ZBjUfF1X53EinykJqiBieUaO.jpg",
-        rate: 80,
-        name: "Plane",
-        release: "Jan 13, 2023",
-      };
+    case "thisWeek":
+      data = listMovieTrendingWeek
       break;
     default:
       break;
@@ -44,23 +43,10 @@ function MenuTrending({ title }) {
 
   return (
     <div className={cx("wrapper")}>
-      <Menu title={title} subMenu={subMenu} onClick={handleChangeContent}>
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
+      <Menu title={title} subMenu={TRENDING_SUB_MENU} onClick={handleChangeContent}>
+        {data.map((item, index)=>(
+          <CardFilm key={item.id} dataCardFilm={item} />
+        ))}
       </Menu>
     </div>
   );

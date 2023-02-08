@@ -7,9 +7,20 @@ import Menu from "../../../components/Menu";
 
 const cx = classNames.bind(styles);
 
+const ONTV_ITEM = {
+  key: "onTv",
+  value: "On TV"
+}
+
+const IN_THEATERS_ITEM = {
+  key: "inTheaters",
+  value: "In Theaters"
+}
+
+const TRAILER_SUB_MENU = [ONTV_ITEM, IN_THEATERS_ITEM];
+
 function MenuTrailer({ title }) {
-  const subMenu = ["On TV", "In Theaters"];
-  const [content, setContent] = useState("On TV");
+  const [content, setContent] = useState("onTv");
   const handleChangeContent = (type) => {
     setContent(type);
   };
@@ -22,7 +33,7 @@ function MenuTrailer({ title }) {
   };
 
   switch (content) {
-    case "On TV":
+    case "onTv":
       data = {
         img: "https://www.themoviedb.org/t/p/w220_and_h330_face/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
         rate: 88,
@@ -30,7 +41,7 @@ function MenuTrailer({ title }) {
         release: "Jan 15, 2023",
       };
       break;
-    case "In Theaters":
+    case "inTheaters":
       data = {
         img: "https://www.themoviedb.org/t/p/w220_and_h330_face/kQ6EfC1igZRNSSsnQbLG2mrOLwj.jpg",
         rate: 22,
@@ -44,7 +55,7 @@ function MenuTrailer({ title }) {
 
   return (
     <div className={cx("wrapper")}>
-      <Menu title={title} subMenu={subMenu} onClick={handleChangeContent}>
+      <Menu title={title} subMenu={TRAILER_SUB_MENU} onClick={handleChangeContent}>
         <CardFilm data={data} />
         <CardFilm data={data} />
         <CardFilm data={data} />

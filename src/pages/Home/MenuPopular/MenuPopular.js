@@ -7,36 +7,37 @@ import Menu from "../../../components/Menu";
 
 const cx = classNames.bind(styles);
 
-function MenuPopular({ title }) {
-  const subMenu = ["On TV", "In Theaters"];
-  const [content, setContent] = useState("On TV");
+const ONTV_ITEM = {
+  key: "onTv",
+  value: "On TV",
+};
+
+const IN_THEATERS_ITEM = {
+  key: "inTheaters",
+  value: "In Theaters",
+};
+
+const POPULAR_SUB_MENU = [ONTV_ITEM, IN_THEATERS_ITEM];
+
+function MenuPopular({ title, dataRender }) {
+  const [content, setContent] = useState("onTv");
+
+  const [listMoviePopularTv, listMoviePopularTheaters] = dataRender;
+
+  console.log(">>>> listMoviePopularTheaters", listMoviePopularTheaters);
+
   const handleChangeContent = (type) => {
     setContent(type);
   };
 
-  let data = {
-    img: "https://www.themoviedb.org/t/p/w220_and_h330_face/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
-    rate: 88,
-    name: "The Last of Us",
-    release: "Jan 15, 2023",
-  };
+  let data = [];
 
   switch (content) {
-    case "On TV":
-      data = {
-        img: "https://www.themoviedb.org/t/p/w220_and_h330_face/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
-        rate: 88,
-        name: "The Last of Us",
-        release: "Jan 15, 2023",
-      };
+    case "onTv":
+      data = listMoviePopularTv;
       break;
-    case "In Theaters":
-      data = {
-        img: "https://www.themoviedb.org/t/p/w220_and_h330_face/kQ6EfC1igZRNSSsnQbLG2mrOLwj.jpg",
-        rate: 22,
-        name: "Való Világ",
-        release: "Sep 09, 2002",
-      };
+    case "inTheaters":
+      data = listMoviePopularTheaters;
       break;
     default:
       break;
@@ -44,23 +45,14 @@ function MenuPopular({ title }) {
 
   return (
     <div className={cx("wrapper")}>
-      <Menu title={title} subMenu={subMenu} onClick={handleChangeContent}>
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
-        <CardFilm data={data} />
+      <Menu
+        title={title}
+        subMenu={POPULAR_SUB_MENU}
+        onClick={handleChangeContent}
+      >
+        {data.map((item, index) => (
+          <CardFilm key={item.id} dataCardFilm={item} />
+        ))}
       </Menu>
     </div>
   );

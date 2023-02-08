@@ -3,13 +3,15 @@ import styles from "./CardFilm.module.scss";
 
 const cx = classNames.bind(styles);
 
-function CardFilm({ data }) {
+function CardFilm({ dataCardFilm }) {
+  const image = `https://image.tmdb.org/t/p/original/${dataCardFilm.poster_path}`
+  const rate = Math.round(dataCardFilm.vote_average * 10)
   return (
     <div className={cx("wrapper")}>
-      <img className={cx("image")} src={data.img} alt="img" />
-      <div className={cx("rate")}>{data.rate}%</div>
-      <span className={cx("name")}>{data.name}</span>
-      <span className={cx("time-release")}>{data.release}</span>
+      <img className={cx("image")} src={image} alt="img" />
+      <div className={cx("rate")}>{rate}%</div>
+      <span className={cx("name")}>{dataCardFilm.original_title||dataCardFilm.name}</span>
+      <span className={cx("time-release")}>{dataCardFilm.release_date||dataCardFilm.first_air_date}</span>
     </div>
   );
 }
