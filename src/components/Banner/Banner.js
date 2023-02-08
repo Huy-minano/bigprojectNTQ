@@ -7,18 +7,22 @@ const Banner = () => {
   const [textSearch, setTextSearch] = useState("");
   return (
     <div className={cx("wrapper")}>
-      <h1>Welcome.</h1>
-      <h2>Millions of movies, TV shows and people to discover. Explore now.</h2>
-      <input
-        onChange={(e) => {
-          setTextSearch(e.target.value);
-        }}
-        placeholder="Search for a movie,tv show,person......."
-        className={cx("searchInput")}
-      />
-      <Link to={`/search/${textSearch}`}>
-        <button className={cx("searchButton")}>Search</button>
-      </Link>
+      <form>
+        <h1>Welcome.</h1>
+        <h2>
+          Millions of movies, TV shows and people to discover. Explore now.
+        </h2>
+        <input
+          onChange={(e) => {
+            setTextSearch(e.target.value);
+          }}
+          placeholder="Search for a movie,tv show,person......."
+          className={cx("searchInput")}
+        />
+        <Link to={`/search/${textSearch}`}>
+          <button className={cx("searchButton")}>Search</button>
+        </Link>
+      </form>
     </div>
   );
 };

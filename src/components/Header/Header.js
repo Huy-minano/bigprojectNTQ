@@ -24,7 +24,7 @@ function Header() {
         </nav>
         <div className={cx("actions")}>
           <Button to="/movies">
-            <FontAwesomeIcon icon={faPlusSquare} className={cx("plus")} />
+          <i className="fa-solid fa-plus"></i>
           </Button>
           <Button to="/movies" outline>
             EN
@@ -32,7 +32,7 @@ function Header() {
           <Button to="/">Login</Button>
           <Button to="/">Join TMDB</Button>
           <Button to="/">
-            <FontAwesomeIcon icon={faSearch} className={cx("search")} />
+          <i className="fa-solid fa-magnifying-glass"></i>
           </Button>
         </div>
       </div>

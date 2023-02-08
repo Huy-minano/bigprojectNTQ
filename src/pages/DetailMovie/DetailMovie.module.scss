@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    
+      .content {
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 2.5%;
+      }
+    }
+  

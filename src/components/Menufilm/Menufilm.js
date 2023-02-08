@@ -37,7 +37,7 @@ const Menufilm = () => {
         <button onClick={getDataToday}>Today</button>
         <button onClick={getDataThisWeek}>This Week</button>
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex" }} className={cx("listFilm")}>
         {listFilm.map((item) => {
           return (
             <ChildMenufilm

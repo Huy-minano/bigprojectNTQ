@@ -1,0 +1,35 @@
+.wrapper{
+    display: flex;
+    justify-content: space-evenly;
+}
+.listFilmSearch{
+    width: 70%;
+    margin-top: 20px;
+}
+.search-pagination {
+    margin-top: 34px;
+    display: flex;
+    // justify-content: center;
+
+    ul {
+        display: flex;
+        gap: 10px;
+    li{
+        list-style: none;
+    }
+    }
+
+    .active {
+        border: 1px solid #000;
+        padding: 5px;
+        transform: translateY(-15%);
+    }
+    a:hover{
+        cursor: pointer;
+    }
+
+    .disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
