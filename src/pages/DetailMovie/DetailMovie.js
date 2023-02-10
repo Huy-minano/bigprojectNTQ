@@ -11,6 +11,7 @@ import MenuRecomment from "./MenuRecomment";
 const cx = classNames.bind(styles);
 
 function DetailMovie() {
+
   return (
     <div className={cx("wrapper")}>
       <TitleMovie />

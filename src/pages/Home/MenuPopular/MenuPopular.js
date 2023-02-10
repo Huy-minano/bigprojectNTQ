@@ -24,8 +24,6 @@ function MenuPopular({ title, dataRender }) {
 
   const [listMoviePopularTv, listMoviePopularTheaters] = dataRender;
 
-  console.log(">>>> listMoviePopularTheaters", listMoviePopularTheaters);
-
   const handleChangeContent = (type) => {
     setContent(type);
   };

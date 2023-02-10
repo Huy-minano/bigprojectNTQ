@@ -1,18 +1,22 @@
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 import styles from "./ActorCard.module.scss";
+import imageNotFound from "../../../../assets/images/image-not-found.jpg";
 
 const cx = classNames.bind(styles);
 
-function ActorCard() {
+function ActorCard({ dataRender }) {
+  const image = !!dataRender.profile_path
+    ? `https://image.tmdb.org/t/p/w500/${dataRender.profile_path}`
+    : imageNotFound;
+
   return (
     <div className={cx("wrapper")}>
-      <img
-        className={cx("image")}
-        src="https://www.themoviedb.org/t/p/w138_and_h175_face/nJo91Czesn6z0d0pkfbDoVZY3sg.jpg"
-        alt="img"
-      />
-      <span className={cx("name")}>Alfred Molina</span>
-      <span className={cx("role")}>Doc Ock / Otto Octavius</span>
+      <Link to={`/person/${dataRender.id}`}>
+        <img className={cx("image")} src={image} alt="img" />
+      </Link>
+      <span className={cx("name")}>{dataRender.name}</span>
+      <span className={cx("role")}>{dataRender.character}</span>
     </div>
   );
 }

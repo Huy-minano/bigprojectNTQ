@@ -1,9 +1,16 @@
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 import styles from "./HeaderHome.module.scss";
-
+import { useState } from "react";
 const cx = classNames.bind(styles);
 
 function HeaderHome() {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleInputValue = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("welcome")}>
@@ -18,8 +25,13 @@ function HeaderHome() {
             <input
               className={cx("input")}
               placeholder="Search for a movie, tv show, person....."
+              onChange={(e) => {
+                handleInputValue(e);
+              }}
             />
-            <button className={cx("btn")}>Search</button>
+            <Link className={cx("btn")} to={`/search/${searchValue}`}>
+              Search
+            </Link>
           </div>
         </div>
       </div>

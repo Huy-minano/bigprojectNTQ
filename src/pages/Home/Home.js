@@ -1,6 +1,7 @@
 import classNames from "classnames/bind";
-import styles from "./Home.module.scss";
+import { useState,useEffect } from "react";
 
+import styles from "./Home.module.scss";
 import HeaderHome from "./HeaderHome";
 import MenuTrending from "./MenuTrending/MenuTrending.js";
 import MenuTrailer from "./MenuTrailer/MenuTrailer.js";
@@ -9,7 +10,6 @@ import LeaderBoard from "./LeaderBoard";
 
 import {getData} from '../../api/apiHandle.js'
 import { TRENDING_DAY_URL, TRENDING_WEEK_URL, POPULAR_THEATERS, POPULAR_TV } from '../../api/url.js'
-import { useState,useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -18,11 +18,13 @@ function Home() {
   const [listMovieTrendingWeek, setListMovieTrendingWeek] = useState([])
   const [listMoviePopularTv, setlistMoviePopularTv] = useState([])
   const [listMoviePopularTheaters, setlistMoviePopularTheaters] = useState([])
+
   const queryOjbTrending = {
-    api_key: "e9e9d8da18ae29fc430845952232787c",
+    api_key: "f9ad526c156fbf78323d55224f4fe4b4",
+    page: 1
   }
   const queryOjbPopular = {
-    api_key: "e9e9d8da18ae29fc430845952232787c",
+    api_key: "f9ad526c156fbf78323d55224f4fe4b4",
     page: 1
   }
 
