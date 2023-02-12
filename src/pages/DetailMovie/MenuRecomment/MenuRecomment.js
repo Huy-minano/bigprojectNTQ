@@ -1,13 +1,13 @@
 import classNames from "classnames/bind";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styles from './MenuRecomment.module.scss'
+import styles from "./MenuRecomment.module.scss";
 import Menu from "../../../components/Menu";
 import RecommentCard from "./RecommentCard";
 import { MOVIE_DETAIL } from "../../../api/url.js";
 import { getData } from "../../../api/apiHandle.js";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 function MenuRecomment({ title }) {
   const [listRecomment, setListRecomment] = useState([]);
@@ -24,7 +24,7 @@ function MenuRecomment({ title }) {
     getData(MOVIE_DETAIL_RECOMMENT, queryListRecomment).then((res) => {
       setListRecomment(res.data.results);
     });
-  }, []);
+  }, [params]);
 
   return (
     <Menu className={cx("wrapper")} title={title}>

@@ -24,7 +24,7 @@ function MenuActor({ title }) {
     getData(MOVIE_DETAIL_LISTACTOR, queryListActor).then((res) => {
       setListActor(res.data.cast);
     });
-  }, []);
+  }, [params]);
 
   const listActorRender = listActor.slice(0, 20);
 

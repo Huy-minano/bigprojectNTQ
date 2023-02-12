@@ -9,33 +9,33 @@ const cx = classNames.bind(styles);
 
 const TODAY_ITEM = {
   key: "toDay",
-  value: "Today"
-}
+  value: "Today",
+};
 
 const THIS_WEEK_ITEM = {
   key: "thisWeek",
-  value: "This Week"
-}
+  value: "This Week",
+};
 
 const TRENDING_SUB_MENU = [TODAY_ITEM, THIS_WEEK_ITEM];
 
 function MenuTrending({ title, dataRender }) {
   const [content, setContent] = useState("toDay");
-  
-  const [listMovieTrendingDay, listMovieTrendingWeek] = dataRender
+
+  const [listMovieTrendingDay, listMovieTrendingWeek] = dataRender;
 
   const handleChangeContent = (type) => {
     setContent(type);
   };
 
-  let data = []
+  let data = [];
 
   switch (content) {
     case "toDay":
-      data = listMovieTrendingDay
+      data = listMovieTrendingDay;
       break;
     case "thisWeek":
-      data = listMovieTrendingWeek
+      data = listMovieTrendingWeek;
       break;
     default:
       break;
@@ -43,8 +43,12 @@ function MenuTrending({ title, dataRender }) {
 
   return (
     <div className={cx("wrapper")}>
-      <Menu title={title} subMenu={TRENDING_SUB_MENU} onClick={handleChangeContent}>
-        {data.map((item, index)=>(
+      <Menu
+        title={title}
+        subMenu={TRENDING_SUB_MENU}
+        onClick={handleChangeContent}
+      >
+        {data.map((item) => (
           <CardFilm key={item.id} dataCardFilm={item} />
         ))}
       </Menu>

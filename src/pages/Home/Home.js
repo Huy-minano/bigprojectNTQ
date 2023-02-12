@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import styles from "./Home.module.scss";
 import HeaderHome from "./HeaderHome";
@@ -8,50 +8,52 @@ import MenuTrailer from "./MenuTrailer/MenuTrailer.js";
 import MenuPopular from "./MenuPopular";
 import LeaderBoard from "./LeaderBoard";
 
-import {getData} from '../../api/apiHandle.js'
-import { TRENDING_DAY_URL, TRENDING_WEEK_URL, POPULAR_THEATERS, POPULAR_TV } from '../../api/url.js'
+import { getData } from "../../api/apiHandle.js";
+import {
+  TRENDING_DAY_URL,
+  TRENDING_WEEK_URL,
+  POPULAR_THEATERS,
+  POPULAR_TV,
+} from "../../api/url.js";
 
 const cx = classNames.bind(styles);
 
 function Home() {
-  const [listMovieTrendingDay, setListMovieTrendingDay] = useState([])
-  const [listMovieTrendingWeek, setListMovieTrendingWeek] = useState([])
-  const [listMoviePopularTv, setlistMoviePopularTv] = useState([])
-  const [listMoviePopularTheaters, setlistMoviePopularTheaters] = useState([])
+  const [listMovieTrendingDay, setListMovieTrendingDay] = useState([]);
+  const [listMovieTrendingWeek, setListMovieTrendingWeek] = useState([]);
+  const [listMoviePopularTv, setlistMoviePopularTv] = useState([]);
+  const [listMoviePopularTheaters, setlistMoviePopularTheaters] = useState([]);
 
   const queryOjbTrending = {
     api_key: "f9ad526c156fbf78323d55224f4fe4b4",
-    page: 1
-  }
+    page: 1,
+  };
   const queryOjbPopular = {
     api_key: "f9ad526c156fbf78323d55224f4fe4b4",
-    page: 1
-  }
+    page: 1,
+  };
 
   useEffect(() => {
-    getData(TRENDING_DAY_URL, queryOjbTrending).then((res) => {
-      setListMovieTrendingDay(res.data.results);
-    })
-    getData(TRENDING_WEEK_URL, queryOjbTrending).then((res) => {
-      setListMovieTrendingWeek(res.data.results);
-    })
-    getData(POPULAR_THEATERS, queryOjbPopular).then((res) => {
-      setlistMoviePopularTheaters(res.data.results);
-    })
-    getData(POPULAR_TV, queryOjbPopular).then((res) => {
-      setlistMoviePopularTv(res.data.results);
-    })
+    const promise1 = getData(TRENDING_DAY_URL, queryOjbTrending);
+    const promise2 = getData(TRENDING_WEEK_URL, queryOjbTrending);
+    const promise3 = getData(POPULAR_THEATERS, queryOjbPopular);
+    const promise4 = getData(POPULAR_TV, queryOjbPopular);
+    Promise.all([promise1, promise2, promise3, promise4]).then((values) => {
+      setListMovieTrendingDay(values[0].data.results);
+      setListMovieTrendingWeek(values[1].data.results);
+      setlistMoviePopularTv(values[2].data.results);
+      setlistMoviePopularTheaters(values[3].data.results);
+    });
   }, []);
 
-
-  const listFilmTrending = [listMovieTrendingDay, listMovieTrendingWeek]
-  const listFilmPopular = [listMoviePopularTv, listMoviePopularTheaters]
+  const listFilmTrending = [listMovieTrendingDay, listMovieTrendingWeek];
+  const listFilmPopular = [listMoviePopularTv, listMoviePopularTheaters];
   return (
     <div className={cx("wrapper")}>
       <HeaderHome />
-      <MenuTrending title="Trending" dataRender={listFilmTrending}/>
+      <MenuTrending title="Trending" dataRender={listFilmTrending} />
       <MenuTrailer title="Latest Trailers" />
-      <MenuPopular title="What's Popular" dataRender={listFilmPopular}/>
+      <MenuPopular title="What's Popular" dataRender={listFilmPopular} />
       <LeaderBoard title="Leaderboard" />
     </div>
   );
