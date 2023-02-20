@@ -34,7 +34,7 @@ function InforDetail(props) {
         </ReadMore>
       </p>
       <h3 className={cx("title-bio")}>Known For</h3>
-     <div style={{height:"22%",display:"flex",flexDirection:"row",overflowX:"auto"}}>
+     <div style={{height:"30%",display:"flex",flexDirection:"row",overflowX:"auto"}}>
      {creditsMovie.map((item) => {
           return (
             <ActorCard
@@ -45,6 +45,7 @@ function InforDetail(props) {
               link='/detailMovie'
               css="unset"
               fontSize="13px"
+              display="none"
             />
           );
         })}

@@ -1,8 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.warpper{
-    height: 100vh;
-}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: var(--default-layout-width);
+    height: 2000px;
+  }

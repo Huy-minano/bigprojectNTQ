@@ -1,0 +1,31 @@
+
+@mixin rate-list {
+    width: 42px;
+    height: 42px;
+    background-color: #081c22;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+.user-rate {
+    align-items: center;
+    position: relative;
+    position: absolute;
+    top:185px;
+    left: 13px;
+    .rate {
+      @include rate-list();
+      height: 28px;
+      width: 28px;
+      position: absolute;
+      left: 7px;    
+    }
+    .rate1{
+      @include rate-list();
+      border: 3px solid #081c22;
+    }
+}

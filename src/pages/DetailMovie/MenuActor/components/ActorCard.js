@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IMG_URL } from "../../../../api/url";
-const               ActorCard = (props) => {
+import PersenCircle from "../../../../components/PersenCircle/PersenCircle";
+const ActorCard = (props) => {
+  const persen=props.vote_average
   return (
-      <div style={{minWidth:"138px",maxHeight:"300px",margin:"10px",borderRadius:"10px",boxShadow:"1px 1px 12px 1px gray",display:"flex",flexDirection:"column"}} key={props.id}>
+    <div style={{height:"100%",width:"100%",position:"relative"}}>
+      <div style={{minWidth:"138px",height:"300px",margin:"10px",borderRadius:"10px",boxShadow:"1px 1px 12px 1px gray",display:"flex",flexDirection:"column"}} key={props.id}>
         <Link to={`${props.link}/${props.id}`} style={{width:"100%",height:"70%",marginBottom:"5px"}}>
         <img
           style={{height:"100%",width:"100%",borderRadius:"10px 10px 0px 0px"}}
@@ -13,7 +16,9 @@ const               ActorCard = (props) => {
         </Link>
         <span style={{padding:"0px 10px",fontWeight:`${props.css}`,fontSize:`${props.fontSize}`}}>{props.original_name}</span>
         <span style={{padding:"0px 10px",fontSize:"13px",marginBottom:"10px"}}>{props.character}</span>
-      </div>  
+      </div>
+      <PersenCircle persen={persen} display={props.display}/>
+    </div>
   );
 };
 

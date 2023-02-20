@@ -17,14 +17,16 @@ function Search() {
   const [pageSearch, setPageSearch] = useState(1);
   const [check, setCheck] = useState(false);
   const [checkP, setCheckP] = useState(false);
-  const [totalPersonInPage, setTotalPersonInPage] = useState(0);
-  const [totalMovieInPage, setTotalMovieInPage] = useState(0);
   const [totalResult, setTotalResult] = useState(0);
   const [totalPerson, setTotalPerson] = useState(0);
+  const [totalCollection, setTotalCollection] = useState(0);
+  const [totalKeyword, setTotalKeyword] = useState(0);
+  const [totalCompany, setTotalCompany] = useState(0);
+  const [totalTv, setTotalTv] = useState(0);
   const [listPersonSearch, setListPersonSearch] = useState([]);
   const [checkPM, setCheckPM] = useState(true);
-  const [pageCountMovie, setPageCountMovie] = useState(0)
-  const [pageCountPerson, setpageCountPerson] = useState(0)
+  const [pageCountMovie, setPageCountMovie] = useState(0);
+  const [pageCountPerson, setPageCountPerson] = useState(0);
   const queryObj = {
     api_key: "e9e9d8da18ae29fc430845952232787c",
     language: "vi",
@@ -33,19 +35,26 @@ function Search() {
     include_adult: "false",
   };
   useEffect(() => {
-    getData(`${SEARCH_URL}/movie`, queryObj).then((res) => {
-      setTotalResult(res.data.total_results);
-      setListFilmSearch(res.data.results);
-      setTotalMovieInPage(res.data.results.length);
+    Promise.all([
+      getData(`${SEARCH_URL}/movie`, queryObj),
+      getData(`${SEARCH_URL}/person`, queryObj),
+      getData(`${SEARCH_URL}/tv`, queryObj),
+      getData(`${SEARCH_URL}/collection`, queryObj),
+      getData(`${SEARCH_URL}/company`, queryObj),
+      getData(`${SEARCH_URL}/keyword`, queryObj),
+    ]).then((res) => {
+      setTotalResult(res[0].data.total_results);
+      setListFilmSearch(res[0].data.results);
       setCheck(true);
-      setPageCountMovie(res.data.total_pages)
-    });
-    getData(`${SEARCH_URL}/person`, queryObj).then((res) => {
-      setListPersonSearch(res.data.results);
-      setTotalPerson(res.data.total_results);
-      setTotalPersonInPage(res.data.results.length);
+      setPageCountMovie(res[0].data.total_pages);
+      setListPersonSearch(res[1].data.results);
+      setTotalPerson(res[1].data.total_results);
       setCheckP(true);
-      setpageCountPerson(res.data.total_pages)
+      setPageCountPerson(res[1].data.total_pages);
+      setTotalTv(res[2].data.total_results)
+      setTotalCollection(res[3].data.total_results)
+      setTotalCompany(res[4].data.total_results)
+      setTotalKeyword(res[5].data.total_results)
     });
   }, [pageSearch]);
   const handlePeople = () => {
@@ -63,6 +72,10 @@ function Search() {
         person={totalPerson}
         onPeople={handlePeople}
         onMovie={handleMovie}
+        tv={totalTv}
+        coll={totalCollection}
+        company={totalCompany}
+        keyword={totalKeyword}
       />
 
       <div className={cx("listFilmSearch")}>
@@ -107,34 +120,38 @@ function Search() {
           <p>Loading....</p>
         )}
 
-        {(listFilmSearch.length===0 && listPersonSearch.length===0) ? "" : (
-          checkPM ? (
-          <div className={cx('search-pagination')}>
-          <ReactPaginate
-            breakLabel={"..."}
-            nextLabel="Next >"
-            previousLabel="< Previous"
-            onPageChange={(e)=>{setPageSearch(e.selected+1)}}
-            pageRangeDisplayed={3}
-            pageCount={pageCountMovie}
-            marginPagesDisplayed={3}
-            activeClassName={cx('active')}
-          />
+        {listFilmSearch.length === 0 && listPersonSearch.length === 0 ? (
+          ""
+        ) : checkPM ? (
+          <div className={cx("search-pagination")}>
+            <ReactPaginate
+              breakLabel={"..."}
+              nextLabel="Next >"
+              previousLabel="< Previous"
+              onPageChange={(e) => {
+                setPageSearch(e.selected + 1);
+              }}
+              pageRangeDisplayed={3}
+              pageCount={pageCountMovie}
+              marginPagesDisplayed={3}
+              activeClassName={cx("active")}
+            />
           </div>
         ) : (
-          <div className={cx('search-pagination')}>
-          <ReactPaginate
-            breakLabel={"..."}
-            nextLabel="Next >"
-            previousLabel="< Previous"
-            onPageChange={(e)=>{setPageSearch(e.selected+1)}}
-            pageRangeDisplayed={3}
-            pageCount={pageCountPerson}
-            marginPagesDisplayed={3}
-            activeClassName={cx('active')}
-          />
+          <div className={cx("search-pagination")}>
+            <ReactPaginate
+              breakLabel={"..."}
+              nextLabel="Next >"
+              previousLabel="< Previous"
+              onPageChange={(e) => {
+                setPageSearch(e.selected + 1);
+              }}
+              pageRangeDisplayed={3}
+              pageCount={pageCountPerson}
+              marginPagesDisplayed={3}
+              activeClassName={cx("active")}
+            />
           </div>
-        )
         )}
       </div>
     </div>

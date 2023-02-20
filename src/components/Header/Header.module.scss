@@ -6,7 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    // position: fixed;
+    z-index: 4;
     .inner{
         width: var(--default-layout-width);
         height: var(--default-layout-horizontal-spacer);

@@ -16,15 +16,17 @@
   background-size: cover;
   display: flex;
   justify-content: center;
-  background-color: rgb(12, 11, 11);
+  position: relative;
+  background-size: cover;
 
   .content {
     width: 90%;
     height: 100%;
     padding: 35px 40px;
-    color: #fff;
+    color: hsl(0, 0%, 100%);
     display: flex;
     justify-content: space-between;
+    z-index: 2;
 
     .poster {
       display: flex;
@@ -35,6 +37,10 @@
         height: 100%;
         border-radius: 10px 10px 0px 0px;
       }
+    }
+    .poster:hover{
+      cursor: pointer;
+      opacity: 0.1;
     }
     .inforMovie {
       flex: 0.71;

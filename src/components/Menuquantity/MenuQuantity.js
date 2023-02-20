@@ -24,7 +24,7 @@ function MenuQuantity(props) {
           }
           <li className={cx("row")}>
             <Button menuResult>TV Shows</Button>
-            <span className={cx("quantity")}>10,000</span>
+            <span className={cx("quantity")}>{props.tv}</span>
           </li>
           {
             !checkPM ? (<li className={cx("row")} onClick={()=>{props.onPeople()}} style={{background:"gray"}}>
@@ -37,19 +37,19 @@ function MenuQuantity(props) {
           }
           <li className={cx("row")}>
             <Button menuResult>Collections</Button>
-            <span className={cx("quantity")}>10,000</span>
+            <span className={cx("quantity")}>{props.coll}</span>
           </li>
           <li className={cx("row")}>
             <Button menuResult>Companies</Button>
-            <span className={cx("quantity")}>10,000</span>
+            <span className={cx("quantity")}>{props.company}</span>
           </li>
           <li className={cx("row")}>
             <Button menuResult>Keywords</Button>
-            <span className={cx("quantity")}>10,000</span>
+            <span className={cx("quantity")}>{props.keyword}</span>
           </li>
           <li className={cx("row")}>
             <Button menuResult>Networks</Button>
-            <span className={cx("quantity")}>10,000</span>
+            <span className={cx("quantity")}>26</span>
           </li>
         </ul>
       </div>

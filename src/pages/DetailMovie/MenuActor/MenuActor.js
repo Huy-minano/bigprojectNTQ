@@ -29,6 +29,7 @@ function MenuActor(props) {
               link="/person"
               css="bold"
               fontSize="15px"
+              display="none"
             />
           );
         })}

@@ -26,8 +26,6 @@ function Person() {
       setCreditsMovie(res.data.cast.slice(0, 8));
     });
   }, []);
-  console.log('detailPerson',detailPerson);
-  console.log("creditsMovie", creditsMovie);
   return (
     <div className={cx("wrapper")}>
       {

@@ -24,7 +24,7 @@ function FilmSearch(props) {
           <span className={cx("date")} style={{fontSize:"14px"}}>{props.date}</span>
         </div>
         <div className={cx("overview")}>
-          <p style={{fontSize:"15px"}}>
+          <p style={{fontSize:"12px"}}>
             {props.overview}
           </p>
         </div>

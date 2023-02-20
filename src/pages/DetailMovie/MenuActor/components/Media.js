@@ -10,13 +10,17 @@ const Media = (props) => {
   const itemActive=['Most Popular','Videos','Backdrops','Posters']
   const detailMovie=props.detailMovie
   const similar=props.similar
+  let listDateSimilar=[]
+  similar.forEach((item)=>{
+    listDateSimilar.push(item.release_date)
+  })
   const onCheckActive = (e) => {
     itemActive.forEach((item,index)=>{
-      if(index+1===Number(e.target.id))setCheckActive(Number(e.target.id))
+      if(index+1===Number(e.target.id))setCheckActive(Number(e.target.id))    
     })
   }
   return (
-    <div style={{height:"35%",marginTop:"20px"}}>
+    <div style={{height:"35%",marginTop:"20px",zIndex:"3"}}>
         <h4 style={{height:"40px",borderBottom:"1px solid rgb(219, 215, 215)"}}>Go to Discussions</h4>
         <div style={{display:"flex",alignItems:"center",gap:"30px",marginTop:"32px"}}>
             <h2>Media</h2>
@@ -36,7 +40,7 @@ const Media = (props) => {
           {
              similar.map((item)=>{
               return (
-                <div style={{height:"55%",margin:"10px",borderRadius:"10px",boxShadow:"0 2px 8px rgb(0 0 0 / 10%)",display:"flex",flexDirection:"column",boxShadow:"1px 1px 12px 1px gray"}} key={item.id}>
+                <div style={{height:"55%",margin:"10px",borderRadius:"10px",boxShadow:"0 2px 8px rgb(0 0 0 / 10%)",display:"flex",flexDirection:"column",boxShadow:"1px 1px 12px 1px gray",position:"relative"}} key={item.id}>
                   <Link to={`/detailMovie/${item.id}`} style={{height:"100%",borderRadius:"10px",marginBottom:"10px"}}>
                   <img
                     style={{height:"100%",width:"auto"}}
@@ -44,10 +48,11 @@ const Media = (props) => {
                     alt=""
                   />
                   </Link>
-                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                  <div style={{display:"flex",justifyContent:"space-between"}} >
                     <span style={{padding:"0px 10px",fontSize:"14px"}}>{item.title}</span>
                     <span style={{padding:"0px 10px",fontSize:"14px"}}>{`${Math.floor(item.vote_average*10)}%`}</span>
                   </div>
+                  <div style={{bottom:"0px",position:"absolute",background:"#efe1e1",display:"flex",justifyContent:"center",alignItems:"center",padding:"5px 0px"}}><i class="fa-solid fa-calendar-days"></i>{item.release_date}</div>
                 </div>
                     )
                   })
